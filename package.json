@@ -10,6 +10,7 @@
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
     "express": "~4.15.5",
+    "mongodb": "^2.2.33",
     "morgan": "~1.9.0",
     "node-cron": "^1.2.1",
     "pug": "2.0.0-beta11",
@@ -17,6 +18,9 @@
   },
   "devDependencies": {
     "csv": "^1.1.1",
+    "csvtojson": "^1.1.9",
+    "json-schema": "^0.2.3",
+    "raml2html": "^6.4.2",
     "winston": "^2.4.0",
     "xml": "^1.0.1",
     "xml2js": "^0.4.19"

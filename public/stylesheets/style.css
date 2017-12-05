@@ -6,3 +6,17 @@ body {
 a {
   color: #00B7FF;
 }
+#right{
+  width: 50%;
+  float: right;
+  text-align: left;
+}
+#left{
+  width: 50%;
+  text-align: left;
+  float:left;
+  margin-right: none;
+}
+#head{
+  text-align: center;
+}

@@ -1,5 +1,21 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  div#head
+    h1= title
+    p Welcome to #{title}
+    br
+  div#right
+    p Choisissez une installation :
+    select#choix-installation
+      for each in installations
+        option(value=each) #{each}
+    button(onclick="list();") Chercher
+    div#right-list
+
+  div#left
+    p Entrez un arrondissement :
+    input#champ-arrondissement(type="text")
+    br
+    button(onclick="fetch();") Chercher
+    div#left-list
