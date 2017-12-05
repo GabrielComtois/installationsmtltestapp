@@ -1,0 +1,19 @@
+#%RAML 1.0
+---
+title: inf4375
+baseUri: http://localhost:3000
+version: 1
+
+/installations:
+  get: 
+    description: Obtenir la liste des installations pour un arrondissement.
+    queryParameters:
+      arrondissement:
+    responses:
+      200:
+        desciption:"liste des installations"
+        body:
+          application/json:
+          schema: !include ../schemas/rinks.json
+      500:
+        desciption: Une erreur interne s'est produite

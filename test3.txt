@@ -1,0 +1,4 @@
+
+> inf4375@0.0.0 start C:\Users\Gabriel\Documents\Projets\ecole\INF4375
+> node ./bin/www
+
