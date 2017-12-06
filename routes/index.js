@@ -19,10 +19,7 @@ router.get('/', function(req, res) {
       }else{
         var inst = collection.distinct("nom").then((result)=>{
           res.render('index',{title:'INF4375 - Installations de la Ville de Montreal',installations:result});
-        });
-        
-
-       
+        });    
       }
     });
   });
