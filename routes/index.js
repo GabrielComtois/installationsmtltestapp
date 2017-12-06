@@ -76,7 +76,16 @@ router.get('/installations',(req,res)=>{
               winston.error(err);
               res.sendStatus(500);
             }else{
-              res.json(result.sort((a, b)=> {return a.nom - b.nom;}));
+              if(req.query.format!=null){
+                if(req.query.format=="xml"){
+
+                }else if(req.query=="csv"){
+
+                }
+              }else{
+                res.json(result.sort((a, b)=> {return a.nom - b.nom;}));
+              }
+              
             }
           });
         }
