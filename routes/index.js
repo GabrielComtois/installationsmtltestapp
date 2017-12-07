@@ -1,16 +1,17 @@
 var express = require('express');
 var http = require('http');
 var winston = require('winston');
-var csv = require('csv');
 var raml2html = require('raml2html');
-var pools = require('../lib/fetcher.js');
 var db = require('../lib/db');
 var mongodb = require('mongodb');
+var builder = require('xmlbuilder');
+var json2xml = require('json2xml');
+var json2csv = require('json2csv');
 var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res) {
-  
+
   db.getConnection((err, db)=>{
     db.collection('installations', (err, collection)=>{
       if(err){
@@ -25,8 +26,6 @@ router.get('/', function(req, res) {
   });
 
 
-
-  
 });
 
 /* GET doc page. */
@@ -63,11 +62,29 @@ router.get('/installations',(req,res)=>{
           });
         }else if(req.query.condition!=null){
           collection.find({"condition.0":req.query.condition}).toArray((err,result)=>{
+            console.log(result);
             if(err){
               winston.error(err);
               res.sendStatus(500);
             }else{
-              res.json(result.sort((a, b)=> {return a.nom - b.nom;}));
+              if(req.query.format!=null){
+                if(req.query.format=="xml"){
+                  result = result.sort((a, b)=> {return a.nom - b.nom;})
+                  res.header("Content-Type", "text/xml; charset=utf-8");
+                  console.log(result);
+                  var response = result;
+                  console.log('<?xml version="1.0" encoding="UTF-8"?>'+json2xml(result));
+                  res.send('<?xml version="1.0" encoding="UTF-8"?>'+json2xml(response));
+                }else if(req.query.format=='csv'){
+                  result = result.sort((a, b)=> {return a.nom - b.nom;})
+                  var fields = ['_id', 'nom', 'arrondissement','ouvert','deblaye','arrose','resurface','condition'];
+                  var csvData = json2csv({ data: result, fields: fields });
+                  res.header("Content-Type", "application/octet-stream; charset=utf-8");
+                  res.send(csvData);
+                }
+              }else{
+                  res.json(result.sort((a, b)=> {return a.nom - b.nom;}));
+              }
             }
           });
         }else if(req.query.nom!=null){
@@ -76,16 +93,7 @@ router.get('/installations',(req,res)=>{
               winston.error(err);
               res.sendStatus(500);
             }else{
-              if(req.query.format!=null){
-                if(req.query.format=="xml"){
-
-                }else if(req.query=="csv"){
-
-                }
-              }else{
                 res.json(result.sort((a, b)=> {return a.nom - b.nom;}));
-              }
-              
             }
           });
         }
