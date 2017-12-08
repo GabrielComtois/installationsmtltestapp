@@ -4,7 +4,6 @@ var winston = require('winston');
 var raml2html = require('raml2html');
 var db = require('../lib/db');
 var mongodb = require('mongodb');
-var builder = require('xmlbuilder');
 var json2xml = require('json2xml');
 var json2csv = require('json2csv');
 var router = express.Router();
