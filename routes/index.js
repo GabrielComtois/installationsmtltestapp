@@ -3,6 +3,7 @@ var http = require('http');
 var winston = require('winston');
 var raml2html = require('raml2html');
 var db = require('../lib/db');
+var fetcher = require('../lib/fetcher');
 var mongodb = require('mongodb');
 var json2xml = require('json2xml');
 var json2csv = require('json2csv');
@@ -10,7 +11,7 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res) {
-
+  fetcher.initDataBase();
   db.getConnection((err, db)=>{
     db.collection('installations', (err, collection)=>{
       if(err){
@@ -98,22 +99,6 @@ router.get('/installations',(req,res)=>{
     });
   });
 });
-
-router.get('/getPools', function(req, res) {
-  pools.getPools((err, data) => {
-    if (err) {
-      res.sendStatus(500);
-    } else {
-      res.json(data);
-    }
-  });
-});
-router.get('/getRinks', function(req, res) {
-  pools.getRinks((data) => {
-      res.json(data);
-  });
-});
-
 
 
 module.exports = router;
