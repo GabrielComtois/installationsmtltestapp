@@ -24,8 +24,6 @@ router.get('/', function(req, res) {
       }
     });
   });
-
-
 });
 
 /* GET doc page. */
