@@ -6,17 +6,32 @@ version: 1
 
 /installations:
   get: 
-    description: Obtenir la liste des installations pour un arrondissement.
+    description: Obtenir la liste des installations pour un ou des parametres donnes
     queryParameters:
       arrondissement:
+        type:string
+        example:LaSalle
+        description: Obtenir la liste des installations pour un arrondissement. 
         required:false
       nom:
+        type:string
+        example: Parc+Jarry
+        description: Obtenir la liste des installations pour un arrondissement. 
+        required:false
       condition:
+        type: string
+        example: mauvaise
+        description: Obtenir la liste des installations selon leur condition. 
+        required:false
+      format:
+        type: string
+        description: Obtenir la liste des installations selon leur condition. 
+        example: xml
+        required:false
     responses:
       200:
         desciption:"liste des installations"
         body:
           application/json:
-          schema: !include ../schemas/rinks.json
       500:
         desciption: Une erreur interne s'est produite

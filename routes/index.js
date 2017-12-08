@@ -49,7 +49,6 @@ router.get('/installations',(req,res)=>{
         res.sendStatus(500);
       }else{
         if(req.query.arrondissement!=null){
-          console.log(req.query.arrondissement);
           collection.find({$or:[{"arrondissement":req.query.arrondissement},{"arrondissement.0.nom_arr.0":req.query.arrondissement}]}).toArray((err,result)=>{
             if(err){
               winston.error(err);
@@ -60,7 +59,6 @@ router.get('/installations',(req,res)=>{
           });
         }else if(req.query.condition!=null){
           collection.find({"condition.0":req.query.condition}).toArray((err,result)=>{
-            console.log(result);
             if(err){
               winston.error(err);
               res.sendStatus(500);

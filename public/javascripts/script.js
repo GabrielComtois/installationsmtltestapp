@@ -6,7 +6,6 @@ function fetch() {
     if (xhr.readyState == 4) {
       if (xhr.status == 200) {
         var objectArray = JSON.parse(xhr.responseText);
-        console.log(objectArray);
         if(objectArray.length==0){
           document.getElementById("left-list").innerHTML="Aucun Resultat";
         }else{
@@ -34,7 +33,6 @@ function list(){
         if (xhr.readyState == 4) {
           if (xhr.status == 200) {
             var objectArray = JSON.parse(xhr.responseText);
-            console.log(objectArray);
             if(objectArray.length==0){
               document.getElementById("right-list").innerHTML="Aucun Resultat";
             }else{
