@@ -70,9 +70,7 @@ router.get('/installations',(req,res)=>{
                 if(req.query.format=="xml"){
                   result = result.sort((a, b)=> {return a.nom - b.nom;})
                   res.header("Content-Type", "text/xml; charset=utf-8");
-                  console.log(result);
-                  var response = result;
-                  console.log('<?xml version="1.0" encoding="UTF-8"?>'+json2xml(result));
+                  var response = {'patinoires': result};
                   res.send('<?xml version="1.0" encoding="UTF-8"?>'+json2xml(response));
                 }else if(req.query.format=='csv'){
                   result = result.sort((a, b)=> {return a.nom - b.nom;})
