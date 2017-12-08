@@ -24,7 +24,6 @@
     "raml2html": "^6.4.2",
     "serve-favicon": "^2.4.5",
     "winston": "^2.4.0",
-    "xml2js": "^0.4.19",
-  },
-  "devDependencies": {}
+    "xml2js": "^0.4.19"
+  }
 }
