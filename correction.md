@@ -1,14 +1,23 @@
-H4 Correction
+Correction
 A1
+lib/fetcher.js
 A2
+lib/fetcher.js
 A3
+localhost:3000/doc
+https://installationsmtltestapp.herokuapp.com/doc
 A4
+https://installationsmtltestapp.herokuapp.com/installations?arrondissement=LaSalle
 A5
+https://installationsmtltestapp.herokuapp.com/
 A6
-
+https://installationsmtltestapp.herokuapp.com/
 C1
-
-todo
+https://installationsmtltestapp.herokuapp.com/installations?condition=Mauvaise
 C2
+https://installationsmtltestapp.herokuapp.com/installations?condition=Mauvaiseformat=xml
 C3
+https://installationsmtltestapp.herokuapp.com/installations?condition=Mauvaiseformat=csv
 F1
+https://installationsmtltestapp.herokuapp.com/
+modifier lurl de la db dans db.js
